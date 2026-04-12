@@ -12,28 +12,29 @@ export interface ArticleMeta {
 const ARTICLES_DIR = path.join(process.cwd(), "articles");
 
 /**
- * Explicit ordering for articles that share the same date.
- * This matches the exact order from the WordPress Activities page.
- * Maps slug -> position (lower = earlier in list for same-date groups).
+ * Explicit ordering for articles. This is the exact order from WordPress.
+ * Maps slug -> position (lower = first).
  */
 const SLUG_ORDER: Record<string, number> = {
-  // 2025-10-14 group
-  "ies-is-the-new-carthage": 1,
-  "aess-ies-tsyp13-technical-challenge-preventing-mission-failure-without-ground-control-for-cubesats": 2,
-  // 2025-03-29 group
-  "ieee-ies-tunisia-section-chapter-technical-session-1-methods-and-tools-for-the-design-of-multilevel-converters": 1,
-  "2024-ieee-international-conference-on-artificial-intelligence-green-energy": 2,
-  "tsyp-12th-edition-ieee-ies-tunisia-section-chapter-ieee-smcs-tunisia-section-chapter-ieee-edsoc-tunisia-section-chapter-technical-challenge": 3,
-  "ieee-ies-tunisia-section-chapter-icaige24-technical-challenge": 4,
-  "webinar-advanced-power-electronics-for-grid-connectivity-applications": 5,
-  "ies-tunisia-section-chapter-online-webinar-in-collaboration-with-ieee-libya-subsection": 6,
-  "pes-x-ies-info-session": 7,
-  "africas-ies-chapters-leaders-workshop": 8,
-  "ieee-tunisian-students-young-professionals-11th-edition-ies-pes-tunisia-section-collaborative-challenge-optimizing-enhancing-the-educational-robot": 9,
-  "introduction-to-ies-discover-the-myriad-benefits-of-ieee-ies-membership-uncover-the-power-of-establishing-and-enhancing-student-branch-chapters-learn-more-about-ieee-ies-offers-to-shape-your-academic": 10,
-  // 2025-03-28 group
-  "the-ieee-international-conference-on-artificial-intelligence-green-energy": 1,
-  "tsyp-11-showcasing-ieee-ies-tunisia-section": 2,
+  "ieee-ies-tunisia-chapters-ieee-day-workshops": 1,
+  "ies-is-the-new-carthage": 2,
+  "aess-ies-tsyp13-technical-challenge-preventing-mission-failure-without-ground-control-for-cubesats": 3,
+  "ies-day-celebration": 4,
+  "ies-gathering-to-success": 5,
+  "iot-workshop": 6,
+  "iot-for-industrie-5-0": 7,
+  "ieee-ies-tunisia-section-chapter-technical-session-1-methods-and-tools-for-the-design-of-multilevel-converters": 8,
+  "2024-ieee-international-conference-on-artificial-intelligence-green-energy": 9,
+  "tsyp-12th-edition-ieee-ies-tunisia-section-chapter-ieee-smcs-tunisia-section-chapter-ieee-edsoc-tunisia-section-chapter-technical-challenge": 10,
+  "ieee-ies-tunisia-section-chapter-icaige24-technical-challenge": 11,
+  "webinar-advanced-power-electronics-for-grid-connectivity-applications": 12,
+  "ies-tunisia-section-chapter-online-webinar-in-collaboration-with-ieee-libya-subsection": 13,
+  "pes-x-ies-info-session": 14,
+  "africas-ies-chapters-leaders-workshop": 15,
+  "ieee-tunisian-students-young-professionals-11th-edition-ies-pes-tunisia-section-collaborative-challenge-optimizing-enhancing-the-educational-robot": 16,
+  "introduction-to-ies-discover-the-myriad-benefits-of-ieee-ies-membership-uncover-the-power-of-establishing-and-enhancing-student-branch-chapters-learn-more-about-ieee-ies-offers-to-shape-your-academic": 17,
+  "the-ieee-international-conference-on-artificial-intelligence-green-energy": 18,
+  "tsyp-11-showcasing-ieee-ies-tunisia-section": 19,
 };
 
 /**
