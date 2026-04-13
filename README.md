@@ -30,9 +30,9 @@ The website is a **fully static site** — zero server runtime, zero database qu
 | Styling | Tailwind CSS 3 + custom design system |
 | Components | React 19 Server Components + shadcn/ui |
 | Icons | Lucide React |
-| Fonts | Montserrat (headings) + Open Sans (body), self-hosted |
+| Fonts | Montserrat (headings) + Open Sans (body) |
 | Content DB | SQLite — read at build time only |
-| Photo Hosting | UploadThing (free tier, 10GB) |
+| Photo Hosting | UploadThing |
 | Deployment | Static export → any free host (Vercel, Cloudflare Pages, Netlify) |
 
 ### Content Management
@@ -46,9 +46,3 @@ Content updates happen through a local admin panel (`npm run admin`), then a reb
 ## Built By
 
 - **Ayoub Hlel** — Design, development, and deployment
-
----
-
-## License
-
-All content © IEEE Industrial Electronics Society Tunisia Section. Code is open for reference.
