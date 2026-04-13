@@ -1,0 +1,23 @@
+# IEEE Industrial Electronics Society Tunisia Section - robots.txt
+
+# Allow all search engine crawlers to index the site
+User-agent: *
+Allow: /
+
+# Sitemap location (absolute URL)
+Sitemap: https://ies.ieee.tn/sitemap.xml
+
+# Block access to Next.js internal files
+Disallow: /_next/static/development/
+Disallow: /_next/webpack-hmr
+
+# Allow important static assets
+Allow: /_next/static/
+Allow: /logos/
+Allow: /awards/
+Allow: /team/
+Allow: /community/
+Allow: /gallery/
+Allow: /articles/
+Allow: /posts/
+Allow: /units/

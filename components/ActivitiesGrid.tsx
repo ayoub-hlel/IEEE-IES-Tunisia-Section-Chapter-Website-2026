@@ -36,7 +36,7 @@ export default function ActivitiesGrid({ articles }: ActivitiesGridProps) {
               </p>
             )}
             <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:underline">
-              Read more <ArrowRight className="size-3" />
+              Read more <ArrowRight className="icon-xs" />
             </span>
           </div>
         </Link>

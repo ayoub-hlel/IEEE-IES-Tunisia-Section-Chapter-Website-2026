@@ -1,0 +1,531 @@
+/* ═══════════════════════════════════════════════════════ */
+/* DESIGN SYSTEM: IEEE IES TUNISIA                        */
+/* ====================================================== */
+/* Typography: Montserrat (headings, 700) + Open Sans     */
+/* (body, 400/500)                                        */
+/* Colors: IES Orange (#E87722) primary, IEEE Blue        */
+/* (#0077C0) secondary                                    */
+/* Icons: Lucide React, consistent sizing (see below)     */
+/* Spacing: 4pt Tailwind scale                            */
+/* ═══════════════════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── DESIGN TOKENS ─────────────────────────────────── */
+@layer base {
+  :root {
+    /* IES Orange — primary (PANTONE 158 C) */
+    --primary: 18 91% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    /* IEEE Blue — secondary (PANTONE 3015 C) */
+    --secondary: 203 100% 29%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Page background: pure white */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    /* Cards: white on warm background */
+    --card: 0 0% 100%;
+    --card-foreground: 22 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 22 30% 12%;
+
+    /* Muted: warm gray for subtle backgrounds */
+    --muted: 30 6% 93%;
+    --muted-foreground: 25 8% 42%;
+
+    /* Accent: subtle blue hint */
+    --accent: 203 100% 96%;
+    --accent-foreground: 203 100% 29%;
+
+    /* Error/destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders, inputs, focus rings */
+    --border: 30 8% 88%;
+    --input: 30 8% 88%;
+    --ring: 18 91% 54%;
+    --radius: 0.5rem;
+  }
+
+  /* ─── GLOBAL RESETS & BASE ──────────────────────────── */
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-open-sans), sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─── TYPOGRAPHY SYSTEM ───────────────────────────── */
+  /* Headings: Montserrat, 700 weight, -0.025em tracking */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  /* Page hero h1: text-4xl (mobile) → lg:text-6xl (desktop) */
+  h1 { @apply text-3xl md:text-4xl; }
+  /* Section h2: text-2xl → md:text-3xl */
+  h2 { @apply text-2xl md:text-3xl; }
+  /* Card/subsection h3: text-lg → md:text-xl, 600 weight */
+  h3 { @apply text-lg md:text-xl font-semibold; }
+  /* Card title h4: text-base, 600 weight */
+  h4 { @apply text-base font-semibold; }
+
+  /* Body text: Open Sans, 16px base, 1.6 line-height */
+  p { @apply text-base leading-relaxed; }
+
+  /* Small text: 14px (text-sm) for metadata, captions */
+  /* Use: text-sm text-muted-foreground */
+
+  /* Micro text: 12px (text-xs) for badges, timestamps */
+  /* Use: text-xs font-medium */
+
+  /* Links: transition on hover */
+  a { @apply transition-colors; }
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* COMPONENT PATTERNS                                     */
+/* ═══════════════════════════════════════════════════════ */
+@layer components {
+  /* ─── HEADER / NAVIGATION ─────────────────────────── */
+  .site-header {
+    background-color: hsl(var(--primary));
+  }
+
+  .nav-link {
+    @apply text-white/90 font-semibold text-base px-5 py-2 rounded transition-colors hover:text-white;
+  }
+
+  /* ─── PAGE LAYOUT ─────────────────────────────────── */
+  /* Page wrapper: consistent top/bottom padding */
+  .page-wrapper {
+    @apply py-16 md:py-24;
+  }
+
+  /* Page container: centered with max-width */
+  .page-container {
+    @apply container mx-auto px-4;
+  }
+
+  /* ─── PAGE HERO (all pages) ───────────────────────── */
+  /* Hero wrapper: centered, mb-16 from content below */
+  .page-hero {
+    @apply text-center mb-16;
+  }
+
+  /* Hero badge: pill-shaped label above h1 */
+  .page-hero-badge {
+    @apply section-label;
+  }
+
+  /* Hero h1: scales 4xl → 6xl, accent word in primary */
+  .page-hero-title {
+    @apply text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight;
+  }
+
+  /* Hero subtitle: lg → xl, muted, max-w-3xl centered */
+  .page-hero-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto;
+  }
+
+  /* ─── SECTION HEADERS ─────────────────────────────── */
+  /* Section wrapper: mb-16 from next section */
+  .section {
+    @apply mb-16;
+  }
+
+  /* Section label pill: small caps, primary colored */
+  .section-label {
+    @apply inline-block font-semibold text-xs uppercase tracking-wider mb-3 px-3 py-1 rounded-full;
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.1);
+  }
+
+  /* Section h2: bold, mb-4 from content */
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold mb-4;
+  }
+
+  /* Section subtitle: muted, max-w-2xl */
+  .section-subtitle {
+    @apply text-base md:text-lg max-w-2xl;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* ─── ICON CONTAINERS ─────────────────────────────── */
+  /* Standard icon container: rounded-xl, primary/10 bg */
+  /* Usage: <div className="icon-container"> <Icon className="icon-md" /> </div> */
+  .icon-container {
+    @apply flex items-center justify-center shrink-0 rounded-xl bg-primary/10;
+  }
+
+  /* Icon sizes (consistent across entire site) */
+  .icon-xs  { @apply size-3; }   /* inline micro-icons (tag dots, small accents) */
+  .icon-sm  { @apply size-3.5; } /* meta row icons (calendar, clock, social links) */
+  .icon-md  { @apply size-4; }   /* standard content icons (card body, list items) */
+  .icon-lg  { @apply size-5; }   /* section header icons, card header icons */
+  .icon-xl  { @apply size-6; }   /* large decorative icons (globe, handshake) */
+  .icon-2xl { @apply size-7; }   /* award card icons, CTA icons */
+  .icon-3xl { @apply size-9; }   /* contact info icon containers */
+  .icon-4xl { @apply size-10; }  /* benefit card icons, pillar icons */
+  .icon-5xl { @apply size-12; }  /* CTA section icons, mail icons */
+
+  /* Icon container sizes (paired with icon sizes above) */
+  .icon-box-xs { @apply size-6 icon-container; }   /* holds icon-xs/icon-sm */
+  .icon-box-sm { @apply size-9 icon-container; }   /* holds icon-md/icon-lg */
+  .icon-box-md { @apply size-10 icon-container; }  /* holds icon-lg/icon-xl */
+  .icon-box-lg { @apply size-12 icon-container; }  /* holds icon-xl/icon-2xl */
+  .icon-box-xl { @apply size-14 icon-container; }  /* holds icon-2xl */
+
+  /* ─── CARD PATTERNS ───────────────────────────────── */
+  /* Standard card hover: lift + shadow */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  /* Card hover with primary shadow accent */
+  .card-hover-primary {
+    @apply transition-all duration-300 hover:-translate-y-1;
+  }
+  .card-hover-primary:hover {
+    box-shadow: 0 12px 24px hsl(var(--primary) / 0.12);
+  }
+
+  /* Card top gradient accent bar */
+  .card-gradient-bar {
+    @apply relative overflow-hidden;
+  }
+  .card-gradient-bar::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/60 to-transparent;
+  }
+
+  /* ─── OFFICER CARDS ───────────────────────────────── */
+  .officer-card {
+    @apply relative overflow-hidden rounded-xl border bg-card transition-all duration-500 hover:-translate-y-1;
+    box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04);
+  }
+  .officer-card:hover {
+    box-shadow: 0 12px 24px hsl(var(--primary) / 0.12);
+  }
+  .officer-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary/80 to-primary/40;
+  }
+  .officer-photo-area {
+    @apply relative mx-auto mb-3 rounded-lg overflow-hidden border bg-muted;
+    border-color: hsl(var(--border));
+  }
+  .officer-card:hover .officer-photo-area {
+    border-color: hsl(var(--primary) / 0.35);
+    box-shadow: 0 6px 16px hsl(var(--primary) / 0.1);
+  }
+  .officer-photo-area .photo-placeholder {
+    @apply w-full h-full flex items-center justify-center;
+    color: hsl(var(--muted-foreground) / 0.25);
+  }
+  .officer-card:hover .officer-photo-area .photo-placeholder {
+    color: hsl(var(--primary) / 0.35);
+  }
+  .officer-role-badge {
+    @apply inline-block text-primary font-semibold text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-primary/10 transition-all duration-300;
+  }
+  .officer-card:hover .officer-role-badge {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* ─── SOCIAL ICON LINKS ───────────────────────────── */
+  .social-icon {
+    @apply size-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110;
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+  }
+  .social-icon:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.25);
+  }
+
+  /* ─── CTA SECTIONS ────────────────────────────────── */
+  /* Primary CTA: gradient bg, white text, centered */
+  .cta-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.85), hsl(var(--secondary) / 0.7));
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  /* CTA glow orbs (decorative, inside cta-gradient) */
+  .cta-glow {
+    @apply absolute rounded-full blur-3xl opacity-20;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
+  }
+
+  /* Secondary CTA: muted bg, rounded-2xl, centered */
+  .cta-secondary {
+    @apply bg-muted/50 rounded-2xl p-10 text-center relative overflow-hidden;
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* FOCUS VISIBLE                                            */
+  /* ═══════════════════════════════════════════════════════ */
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* SELECTION                                                */
+  /* ═══════════════════════════════════════════════════════ */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.15);
+    color: hsl(var(--foreground));
+  }
+
+  /* ═══════════════════════════════════════════════════════ */
+  /* SCROLLBAR                                                */
+  /* ═══════════════════════════════════════════════════════ */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* REDUCED MOTION                                           */
+/* ═══════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* SCROLL MARGIN FOR FIXED HEADER                           */
+/* ═══════════════════════════════════════════════════════ */
+:target { scroll-margin-top: 8rem; }
+
+/* ═══════════════════════════════════════════════════════ */
+/* ARTICLE PROSE STYLING                                    */
+/* ═══════════════════════════════════════════════════════ */
+.article-prose {
+  @apply text-foreground leading-relaxed;
+}
+
+.article-prose h1 {
+  @apply font-heading font-bold text-2xl md:text-3xl mt-10 mb-4;
+}
+
+.article-prose h2 {
+  @apply font-heading font-bold text-xl md:text-2xl mt-8 mb-4;
+}
+
+.article-prose h3 {
+  @apply font-heading font-semibold text-lg md:text-xl mt-6 mb-3;
+}
+
+.article-prose p {
+  @apply mb-4 text-base leading-relaxed;
+}
+
+.article-prose a {
+  @apply text-primary underline underline-offset-2 hover:opacity-80;
+}
+
+.article-prose strong {
+  @apply font-semibold;
+}
+
+.article-prose em {
+  @apply italic;
+}
+
+.article-prose ul {
+  @apply list-disc pl-6 mb-4 space-y-1.5;
+}
+
+.article-prose ol {
+  @apply list-decimal pl-6 mb-4 space-y-1.5;
+}
+
+.article-prose li {
+  @apply text-base leading-relaxed;
+}
+
+.article-prose li > ul,
+.article-prose li > ol {
+  @apply mt-1.5 mb-0;
+}
+
+.article-prose blockquote {
+  @apply border-l-4 border-primary/30 pl-4 py-2 my-6 italic text-muted-foreground bg-muted/50 rounded-r-lg;
+}
+
+.article-prose img {
+  @apply rounded-lg shadow-sm my-6 w-full h-auto;
+}
+
+.article-prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.article-prose pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto mb-6 text-sm;
+}
+
+.article-prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.article-prose hr {
+  @apply border-border my-8;
+}
+
+.article-prose table {
+  @apply w-full border-collapse mb-6 text-sm;
+}
+
+.article-prose th {
+  @apply bg-muted font-semibold text-left px-3 py-2 border;
+}
+
+.article-prose td {
+  @apply px-3 py-2 border;
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* HERO SECTION ANIMATIONS                                  */
+/* ═══════════════════════════════════════════════════════ */
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-10px) translateX(-10px); }
+  75% { transform: translateY(-30px) translateX(5px); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.5); }
+}
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(45 100% 50% / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(45 100% 50% / 0.6); }
+}
+@keyframes heroBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes heroPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.7; }
+}
+@keyframes scrollDown {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* CARD HOVER EFFECTS                                       */
+/* ═══════════════════════════════════════════════════════ */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+.card-hover-primary {
+  @apply transition-all duration-300 hover:-translate-y-1;
+}
+.card-hover-primary:hover {
+  box-shadow: 0 12px 24px hsl(var(--primary) / 0.12);
+}
+
+.card-gradient-bar {
+  @apply relative overflow-hidden;
+}
+.card-gradient-bar::before {
+  content: '';
+  @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/60 to-transparent;
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* CTA SECTION                                              */
+/* ═══════════════════════════════════════════════════════ */
+.cta-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.85), hsl(var(--secondary) / 0.7));
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+.cta-glow {
+  @apply absolute rounded-full blur-3xl opacity-20;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.4), transparent 70%);
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* SHADOW VARIANTS                                          */
+/* ═══════════════════════════════════════════════════════ */
+.shadow-card-lg {
+  box-shadow: 0 10px 40px hsl(var(--foreground) / 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* ANIMATION UTILITIES                                      */
+/* ═══════════════════════════════════════════════════════ */
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out both;
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* MARQUEE (subunits logo scroll)                           */
+/* ═══════════════════════════════════════════════════════ */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
