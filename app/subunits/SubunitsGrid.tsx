@@ -45,11 +45,25 @@ function SocialLinks({ subunit }: { subunit: Subunit }) {
   );
 }
 
+// UploadThing logo URLs for subunits without local logo files
+const UT_LOGOS: Record<string, string> = {
+  isimms: "https://utfs.io/f/TjXaYUuww8KkTnE6Q9ww8KkmajNg6PCEFscpW7xu9yVb1AlX",
+};
+
 function SubunitLogo({ shortName, name }: { shortName: string; name: string }) {
   const [failed, setFailed] = useState(false);
   const logoPath = `/logos/subunits/${shortName}.png`;
 
   if (failed) {
+    // Try UploadThing fallback
+    const utUrl = UT_LOGOS[shortName];
+    if (utUrl) {
+      return (
+        <div className="size-20 rounded-full overflow-hidden bg-muted flex items-center justify-center shrink-0">
+          <img src={utUrl} alt={`${name} logo`} className="w-full h-full object-cover" />
+        </div>
+      );
+    }
     return (
       <div className="size-20 rounded-full bg-muted flex items-center justify-center shrink-0 text-muted-foreground">
         <Building2 className="icon-lg" aria-hidden="true" />

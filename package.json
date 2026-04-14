@@ -12,6 +12,7 @@
     "db:reset": "node scripts/seed-db.mjs --reset"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.3",

@@ -182,7 +182,7 @@ export default function SBCActivitiesPage() {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-6 text-base shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <a href="https://forms.gle/wyuJirLLZYyiYL9T9" target="_blank" rel="noopener noreferrer">
+                <a href="/contact/">
                   <Calendar className="size-5 mr-2" aria-hidden="true" />
                   Declare Your Event
                 </a>

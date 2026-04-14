@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Facebook, Linkedin, Instagram, Send } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Mail, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us | IEEE IES Tunisia Section",
@@ -38,7 +36,11 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-sm text-foreground mb-3">Follow Us</h3>
                   <div className="flex gap-2">
-                    {[["Facebook", "https://www.facebook.com/profile.php?id=61551058026833", Facebook], ["LinkedIn", "https://www.linkedin.com/company/ieee-ies-tunisia-chapter/about/?viewAsMember=true", Linkedin], ["Instagram", "https://www.instagram.com/ieee_ies_tunisia_chapter", Instagram]].map(([label, href, Icon]: any) => (
+                    {[
+                      { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61551058026833", Icon: Facebook },
+                      { label: "LinkedIn", href: "https://www.linkedin.com/company/ieee-ies-tunisia-chapter/about/?viewAsMember=true", Icon: Linkedin },
+                      { label: "Instagram", href: "https://www.instagram.com/ieee_ies_tunisia_chapter", Icon: Instagram },
+                    ].map(({ label, href, Icon }) => (
                       <a key={label} href={href} target="_blank" rel="noreferrer" className="size-9 bg-primary/5 rounded-xl flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110" aria-label={label}><Icon className="icon-md" /></a>
                     ))}
                   </div>
@@ -49,13 +51,7 @@ export default function ContactPage() {
           <Card className="bg-muted/50 card-hover card-gradient-bar">
             <CardHeader><CardTitle>Send a Message</CardTitle></CardHeader>
             <CardContent>
-              <form className="flex flex-col gap-4">
-                <div><label htmlFor="name" className="block text-sm font-medium mb-1.5">Name</label><Input id="name" placeholder="Your name" /></div>
-                <div><label htmlFor="email" className="block text-sm font-medium mb-1.5">Email</label><Input id="email" type="email" placeholder="your@email.com" /></div>
-                <div><label htmlFor="message" className="block text-sm font-medium mb-1.5">Message</label><Textarea id="message" rows={5} placeholder="How can we help?" className="resize-none" /></div>
-                <Button className="font-bold tracking-wide shadow-md"><Send className="icon-md mr-2" />Send Message</Button>
-              </form>
-              <p className="text-xs text-muted-foreground mt-3">Note: This is a static form. Email us at <a href="mailto:ies.tn@ieee.org" className="text-primary hover:underline font-medium">ies.tn@ieee.org</a></p>
+              <ContactForm />
             </CardContent>
           </Card>
         </div>

@@ -112,7 +112,7 @@ INSERT OR IGNORE INTO subunits (name, short_name, location, university, facebook
     ('IAS IES PES ENIT Student Branch Joint Chapter', 'enit', 'Tunis', 'National School of Engineers of Tunis', 'https://www.facebook.com/profile.php?id=61557516737236', NULL, NULL, 4),
     ('IES PES ENET''COM Student Branch Joint Chapter', 'enetcom', 'Sfax', 'National School of Electronics and Telecommunications of Sfax', 'https://www.facebook.com/PESENETCom', NULL, NULL, 5),
     ('IAS IES ISET Bizerte Student Branch Joint Chapter', 'iset-bizerte', 'Bizerte', 'Higher Institute of Technological Studies of Bizerte', 'https://www.facebook.com/IAS.ISETBz', NULL, NULL, 6),
-    ('IES PES ISIMMS Student Branch Joint Chapter', 'isimms', 'Sfax', 'Higher Institute of Computer Science and Multimedia of Sfax', NULL, NULL, NULL, 7),
+    ('IES PES ISIMS Student Branch Joint Chapter', 'isims', 'Sfax', 'Higher Institute of Computer Science and Multimedia of Sfax', NULL, NULL, NULL, 7),
     ('IAS IES Sup''Com Student Branch Joint Chapter', 'supcom', 'Tunis', 'Higher School of Communication of Tunis', NULL, 'https://ias-supcom.ieee.tn/', NULL, 8),
     ('IES ISSATM Student Branch Chapter', 'issatm', 'Tunis', 'Higher Institute of Applied Sciences and Technology of Mateur', 'https://www.facebook.com/profile.php?id=61575236892780', NULL, NULL, 9),
     ('IES ISTIC Student Branch Chapter', 'istic', 'Tunis', 'Higher Institute of Computer and Communication Technologies', 'https://www.facebook.com/profile.php?id=61587696301965', NULL, NULL, 10);

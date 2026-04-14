@@ -93,20 +93,20 @@ function NavDropdown({
 export default function Header() {
   return (
     <header id="header" className="site-header relative z-50">
-      {/* Top bar */}
-      <div className="bg-white/5">
-        <div className="container mx-auto px-4 py-1.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-xs text-white/60">
-          {topLinks.map(([label, href]) => (
+      {/* Top bar — IEEE org style */}
+      <div className="bg-[#FDF1E8]">
+        <div className="container mx-auto px-4 py-1.5 flex flex-wrap items-center gap-x-0 gap-y-0.5 text-xs font-medium">
+          {topLinks.map(([label, href], i) => (
             <React.Fragment key={label}>
+              {i > 0 && <span className="mx-3 select-none text-primary/30" aria-hidden="true">|</span>}
               <a
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-white transition-colors"
+                className="text-primary hover:text-primary/80 transition-colors"
               >
                 {label}
               </a>
-              <span className="text-white/20 select-none" aria-hidden="true">/</span>
             </React.Fragment>
           ))}
         </div>
