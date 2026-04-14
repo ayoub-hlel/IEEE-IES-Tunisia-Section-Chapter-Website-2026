@@ -301,7 +301,8 @@ export default function HubsNodesPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild size="lg">
-                  <a className="gap-2">
+                  <a
+                  href="https://forms.gle/ZenH87VfdxfnxZyDA" className="gap-2">
                     Contribute to the initiative <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>
